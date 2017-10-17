@@ -1,0 +1,109 @@
+Modificadores de Acceso en PHP:
+public: Atributos o metodos accesibles desde cualquier lugar.
+private: Atributos o métodos accesibles desde la misma clase y sus métodos.
+protected: Herencia
+
+*******Importante :( PHP no soporta sobrecarga, se puede simular utilizando parametros por defecto.
+
+Constructores, caracteristicas(PHP):
+	Funcion o método que se utiliza para inicializar atributos internos u otro tipo de objetos.
+	Es el primer método en ejecutarse al crear una instancia.
+	No puede sobrecargarse directamente al igual que cualquier método en PHP
+	No pueden retornar ningun valor.
+	Al igual que en C++ PHP soporta destructores.
+	El nombre del constructor de una clase en PHP debe ser __construct, el utilizar el mismo nombre de la clase para un constructor esta deprecado.
+	El constructor debe ser obligatoriamente public.
+	
+
+Pilares de la programación orientada a objetos:
+
+**Encapsulacion: Proteger atributos o metodos internos de la clase mediante el modificador private. Se hace esto para proteger la integridad de la información.
+Para asignar u obtener los valores de los atributos se crean metodos publicos más conocidos como sets y gets.
+	
+		//Para asignar un valor:
+		public function setAtributo(atributo){
+			$this->atributo=atributo;
+		}
+
+		//Para obtener un valor
+		public function getAtributo(){
+			return $this->atributo;
+		}
+
+
+**Abstraccion: Es una caracteristica de los lenguages de programacion orientados a objetos que permiten desarrollar funcionalidades modulares de tal forma que es posible hacer uso de ellas por terceros sin necesidad de saber o entender como funcionan internamente, es decir usar algo sin saber como lo hace, nos abstraemos de su funcionalidad. 
+
+**Herencia: 
+	Es una caracteristica de los lenguajes de programacion orientados a objetos que permiten la reutilizacion de codigo, lo cual permite hacer programas o bibliotecas modulares y extendibles.
+	La herencia se logra identificando atributos y acciones en comun de un conjuntos de clases y agruparlas en una nueva clase la cual es denominada Clase Padre, Super Clase o Clase Base.
+	A partir de esta nueva clase se pueden crear nuevas clases que extiendan su funcionalidad, a estas clases se les conoce como Clases Hijas, Sub Clases o Clases Derivadas.
+
+	Sobreescritura de metodos:
+	Es volver a escribir o redefinir un metodo que estaba definido en una clase padre. Dicho metodo sobrecargado puede tener una funcionalidad completamente diferente, inclusive llamar al mismo metodo pero de la clase padre utilizando parent::
+
+	
+	Clases abstractas: -->Abstract -> Resumen
+	Son clases que sirven como plantilla o clases resumen, usualmente se utilizan como clases padre y tienen las siguientes caracteristicas:
+	*No se puede instanciar una clase abstracta.
+	*A pesar de que no se pueden instanciar si tienen constructor, este constructor puede ser llamado desde clases hijas.
+	*Para que una clase sea abstracta se antepone el modificador abstract.
+		Ejemplo:
+			abstract class Persona       		(PHP)
+			public abstract class Persona       (Java)
+
+	*Se le puede asignar el modificador abstract a un metodo, de ser así este no debe llevar cuerpo y se debe sobreescribir obligatoriamente en las clases hijas.
+		Ejemplo:
+			public abstract function matricular();
+	*Una clase abstracta puede tener o no metodos abstractos.
+	*Con un metodo que sea abstracto la clase debe ser abstracta.
+
+	Interfaces:
+	Son estructuras de datos similares a las clases abstractas algunas veces llamadas clases abstractas puras. 
+	Se utiliza la palabra reservada interface para definir una interfaz.
+	Una interfaz tiene las siguientes caracteristicas:
+	*No se pueden instanciar.
+	*No tienen constructor.
+	*Todos sus metodos son abstractos, es decir no tienen cuerpo y tienen que sobreescribirse en clases hijas.
+	*Todos sus metodos deben ser publicos.
+	*Sus atributos deben ser constantes, estaticos y publicos.
+
+		const atributo;
+
+	Atributos con modificador static:
+	*Mantienen el mismo valor para todos los objetos, es decir es un atributo de clase.
+	*Se puede acceder a ellos sin necesidad de tener una instancia:
+		Clase::nombreAtributoStatic;    (PHP)
+		Clase.nombreAtributoStatic;     (Java)
+	*Puede aplicarse el modificador static a metodos.
+
+
+
+
+
+Polimorfismo:
+
+
+
+Persona:
+	Apellido
+	Edad
+	Genero
+	Identidad
+	Telefono
+	Carrera
+	Cantidad de Clases
+	Aprobar()
+	Reprobar()
+
+Alumno:
+	Cuenta	
+	Matricular()
+	Cancelar()
+	Pagar()
+	PagarReposicion()
+
+
+Maestro:
+	Numero Empleado
+	Sueldo
+	Facturar()
