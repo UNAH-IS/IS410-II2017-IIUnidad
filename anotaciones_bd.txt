@@ -1,0 +1,63 @@
+Relacionales
+	Oracle
+	Postgres
+	MySQL
+		MySQL Workbench
+	SqlServer
+
+
+Cardinalidades o relaciones:
+1:N uno a muchos
+N:1 muchos a uno
+1:1 Uno a uno
+N:M Muchos a muchos
+
+
+
+Llave primaria: Campo o conjunto de campos que identifican de forma unica un registro.
+
+Llave foranea: Campo o conjunto de campos que hace referencia a otra tabla para establecer una relacion. 
+
+
+
+Data Definition Language (DDL) :
+Instrucciones para crear, modificar, eliminar estructuras de datos, por ejemplo: crear, modificar,eliminar tablas, columnas, procesos, vistas, etc.
+
+Data Manipulation Language (DML):
+Instrucciones para insertar, actualizar, eliminar informacion, es decir registros de una tabla.
+	INSERT INTO tbl_categorias (codigo_categoria, nombre_categoria) VALUES (NULL, 'Educativo');
+	INSERT INTO tabla(campo1, campo2, ... , campoN)
+	VALUES (valor1, valor2,...,valorN);
+
+
+Query Language (QL):
+Instrucciones para consultar informacion.
+
+Sincronizar un modelo de base de datos desde MysqlWorkbench
+Menu Database->Sinchronize Model
+
+
+RDBMS (Relational Data Base Manager System)
+
+
+Que significa WAMP:
+Windows
+Apache
+Mysql
+PHP
+
+
+Datos para conectarse con MYSQL
+*Host: Direccion IP o nombre de dominio
+	127.0.0.1/localhost
+*Puerto:
+	3306
+*Usuario:
+	root
+*Password: 
+	""
+
+Herramientas para trabajar con MYSQL
+MysqlWorkbench
+PHPMyadmin
+DataGrip
