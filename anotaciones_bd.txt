@@ -25,13 +25,57 @@ Instrucciones para crear, modificar, eliminar estructuras de datos, por ejemplo:
 
 Data Manipulation Language (DML):
 Instrucciones para insertar, actualizar, eliminar informacion, es decir registros de una tabla.
+
+
+	*Insertar un registro
 	INSERT INTO tbl_categorias (codigo_categoria, nombre_categoria) VALUES (NULL, 'Educativo');
+	Sintaxis:	
 	INSERT INTO tabla(campo1, campo2, ... , campoN)
 	VALUES (valor1, valor2,...,valorN);
+
+	INSERT INTO nombre_tabla(campo1,campo2,...,campoN)
+	VALUES 	(valor1, valor2,...,valorN),
+			(valor1, valor2,...,valorN),
+			(valor1, valor2,...,valorN);
+
+
+	*Actualizar un registro
+	UPDATE tbl_categorias 
+	SET nombre_categoria = 'Adultos' 
+	WHERE codigo_categoria = 7;
+	Sintaxis:
+	UPDATE nombre_tabla
+	SET campo1=nuevo_valor_1,
+		 campo2=nuevo_valor_2,
+		 ...
+		 campoN=nuevo_valor_N
+	WHERE condicion;
+	Usualmente en la condicion se filtran los registros por la llave primaria 
+
+
+
+	*Eliminar un registro:
+	DELETE FROM tbl_categorias 
+	WHERE codigo_categoria = 8;
+
+	Sintaxis:
+	DELETE FROM nombra_tabla
+	WHERE condicion;
+	Usualmente en la condicion se filtran los registros por la llave primaria 
 
 
 Query Language (QL):
 Instrucciones para consultar informacion.
+
+	Sintaxis:
+	SELECT campo1, campo2,...campoN
+	FROM nombre_tabla
+	WHERE condicion;
+
+	Ejemplo:
+	SELECT codigo_empresa, nombre_empresa
+	FROM tbl_empresas
+	WHERE codigo_empresa = 1;
 
 Sincronizar un modelo de base de datos desde MysqlWorkbench
 Menu Database->Sinchronize Model
