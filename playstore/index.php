@@ -104,7 +104,7 @@
 						<tr>
 							<td>Tipo Calificación:</td>
 							<td>
-								<select name="" id="" class="form-control">
+								<select name="" id="slc-tipos-calificaciones" class="form-control">
 								</select>
 							</td>
 						</tr>

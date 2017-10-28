@@ -1,22 +1,22 @@
 <?php
 	include("../class/class-conexion.php");
+	$objConexion = new Conexion();
 	switch ($_GET["accion"]) {
 	 	case "obtener_categorias":
-	 		$objConexion = new Conexion();
-
-			$resultado = $objConexion->ejecutarConsulta("SELECT codigo_categoria,nombre_categoria FROM tbl_categorias");
-
-			while (($fila=$objConexion->obtenerFila($resultado))){
-				echo '<label><input type="checkbox" name="categorias[]" value="'.$fila["codigo_categoria"].'">'.$fila["nombre_categoria"].'</label><br>';
-			}
-			
-			$objConexion->cerrarConexion();
+	 		include("../class/class-categoria.php");
+			Categoria::obtenerListaCategorias($objConexion);			
 	 	break;
 	 	case "obtener_empresas":
-	 			//<option value="valor">Etiqueta</option>
+			include("../class/class-empresa.php"); 
+			Empresa::obtenerListaEmpresas($objConexion);		
 	 		break;
+	 	case "obtener_tipos_calificaciones":
+	 		include("../class/class-tipo-calificacion.php"); 
+	 		TipoCalificacion::obtenerListaTiposCalificaciones($objConexion);
+	 	break;
 	 	default:
 	 		echo "Accion invalida";
 	 		break;
 	 } 
+	 $objConexion->cerrarConexion();
 ?>
