@@ -111,7 +111,7 @@
 						<tr>
 							<td>Tipo Contenido:</td>
 							<td>
-								<select name="" id="" class="form-control">
+								<select name="" id="slc-tipos-contenidos" class="form-control">
 								</select>
 							</td>
 						</tr>

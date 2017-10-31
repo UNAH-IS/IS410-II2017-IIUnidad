@@ -14,6 +14,10 @@
 	 		include("../class/class-tipo-calificacion.php"); 
 	 		TipoCalificacion::obtenerListaTiposCalificaciones($objConexion);
 	 	break;
+	 	case "obtener_tipos_contenidos":
+	 		include("../class/class-tipo-contenido.php"); 
+	 		TipoContenido::obtenerListaTiposContenidos($objConexion);
+	 	break;
 	 	default:
 	 		echo "Accion invalida";
 	 		break;

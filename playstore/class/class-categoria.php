@@ -44,7 +44,7 @@
 
 			while (($fila=$objConexion->obtenerFila($resultado))){
 				echo '<label><input type="checkbox" name="categorias[]" value="'.$fila["codigo_categoria"].'">'.$fila["nombre_categoria"].'</label><br>';
-			}
+			}	
 		}
 	}
 ?>
