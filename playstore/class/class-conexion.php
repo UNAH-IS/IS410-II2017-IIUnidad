@@ -28,6 +28,14 @@
 		public function cerrarConexion(){
 			mysqli_close($this->link);
 		}
+
+		public function getLink(){
+			return $this->link;
+		}
+
+		public function antiInyeccion($texto){
+			return mysqli_real_escape_string($this->link, $texto);
+		}
 	}
 
 ?>

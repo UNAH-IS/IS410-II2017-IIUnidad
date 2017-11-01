@@ -124,16 +124,16 @@
 					 codigo_tipo_contenido, nombre_aplicacion, version, 
 					 calificacion, descripcion, fecha_publicacion, cantidad_instalaciones,url_icono) 
 					 VALUES (%s,%s,%s,'%s','%s',%s,'%s','%s',%s,'%s')",
-					mysqli_real_escape_string($this->empresa->getCodigoEmpresa()),
-					mysqli_real_escape_string($this->tipoCalificacion->getCodigoTipoCalificacion()),
-					mysqli_real_escape_string($this->tipoContenido->getCodigoTipoContenido()),
-					mysqli_real_escape_string($this->nombreAplicacion),
-					mysqli_real_escape_string($this->version),
-					mysqli_real_escape_string($this->calificacionPromedio),
-					mysqli_real_escape_string($this->descripcion),
-					mysqli_real_escape_string($this->fechaPubicacion),
+					$conexion->antiInyeccion($this->empresa->getCodigoEmpresa()),
+					$conexion->antiInyeccion($this->tipoCalificacion->getCodigoTipoCalificacion()),
+					$conexion->antiInyeccion($this->tipoContenido->getCodigoTipoContenido()),
+					$conexion->antiInyeccion($this->nombreAplicacion),
+					$conexion->antiInyeccion($this->version),
+					$conexion->antiInyeccion($this->calificacionPromedio),
+					$conexion->antiInyeccion($this->descripcion),
+					$conexion->antiInyeccion($this->fechaPubicacion),
 					0,			
-					mysqli_real_escape_string($this->urlIcono)
+					$conexion->antiInyeccion($this->urlIcono)
 			);
 			echo $sql;
 			///mysqli_real_escape_string($this->categorias),

@@ -47,31 +47,31 @@
 						<tr>
 							<td>Nombre aplicación:</td>
 							<td>
-								<input type="text" name="" id="" class="form-control">
+								<input type="text" name="" id="txt-nombre-aplicacion" class="form-control">
 							</td>
 						</tr>
 						<tr>
 							<td>Descripción:</td>
 							<td>
-								<input type="text" name="" id="" class="form-control">
+								<input type="text" name="" id="txt-descripcion" class="form-control">
 							</td>
 						</tr>
 						<tr>
 							<td>Fecha de publicación:</td>
 							<td>
-								<input type="date" name="" id="" class="form-control">
+								<input type="date" name="" id="txt-fecha-publicacion" class="form-control">
 							</td>
 						</tr>
 						<tr>
 							<td>Calificación promedio:</td>
 							<td>
-								<input type="text" name="" id="" class="form-control">
+								<input type="text" name="" id="txt-calificacion" class="form-control">
 							</td>
 						</tr>
 						<tr>
 							<td>Icono:</td>
 							<td>
-								<select name="" id="" class="form-control">
+								<select name="" id="slc-url-icono" class="form-control">
 									<?php 
 										for($i=0; $i<sizeof($iconos); $i++)
 											echo '<option value="'.$iconos[$i].'">'.$iconos[$i].'</option>'
@@ -90,7 +90,7 @@
 						<tr>
 							<td>Version:</td>
 							<td>
-								<input type="text" name="" id="" class="form-control">
+								<input type="text" name="" id="txt-version" class="form-control">
 							</td>
 						</tr>
 						<tr>

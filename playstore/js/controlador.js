@@ -50,7 +50,15 @@ $(document).ready(function(){
 });
 
 $("#btn-guardar").click(function(){
-	var parametros= "txt-nombre-aplicacion="+$("#txt-nombre-aplicacion").val()+"&"+
+	var categorias = "";
+	//categorias[]=1&lista[]=2&lista[]=3&
+
+	$("input[name='categorias[]']:checked").map(function(){
+		categorias += "categorias[]="+$(this).val()+"&";
+	});
+	alert(categorias);
+
+	var parametros= categorias + "txt-nombre-aplicacion="+$("#txt-nombre-aplicacion").val()+"&"+
 					"txt-descripcion="+$("#txt-descripcion").val()+"&"+
 					"txt-fecha-publicacion="+$("#txt-fecha-publicacion").val()+"&"+
 					"txt-calificacion="+$("#txt-calificacion").val()+"&"+
@@ -59,6 +67,7 @@ $("#btn-guardar").click(function(){
 					"slc-empresa="+$("#slc-empresa").val()+"&"+
 					"slc-tipos-calificaciones="+$("#slc-tipos-calificaciones").val()+"&"+
 					"slc-tipos-contenidos="+$("#slc-tipos-contenidos").val();
+	alert(parametros);
 	$.ajax({
 		url:"ajax/gestion-aplicaciones.php?accion=guardar",
 		data:parametros,
