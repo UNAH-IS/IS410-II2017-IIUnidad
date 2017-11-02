@@ -126,89 +126,11 @@
 					</table>
 				</form>
 				<!--- FIN DEL FORMULARIO -->
+				<div id="div-resultado-insert"></div>
 			</div>
 			<!--Listado de las aplicaciones-->
 			<div class="col-lg-6">
-				<div class="row">
-					<!-- Inicio de la lista de aplicaciones -->
-					<!-- en esta parte debe codificar -->
-					<!-- PLANTILLA:
-					
-					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<img src="#URL_ICONO#" class="img-responsive">
-							<b>#NOMBRE_APLICACION# </b><br>
-							<span class="label label-primary">#CALIFICACION#</span>
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
-							#DESCRIPCION#<br>
-							Versión: <b>#VERSION_APLICACION#</b><br>
-							<a href="#URL_APLICACION#">Descargar</a>
-						</div>
-					</div>
-
-					 -->
-
-					<!--TARJETA DE PRUEBA 1-->
-					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<img src="img/icono1.png" class="img-responsive">
-							<b>Feizbuk</b>
-							<span class="label label-primary">5</span> 
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
-							Esta es la descripción<br>
-							Versión: <b>1.0</b><br>
-							<a href="apks/aplicacion1.apk">Descargar</a>
-						</div>
-					</div>
-					<!--TARJETA DE PRUEBA 2-->
-					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<img src="img/icono2.png" class="img-responsive">
-							<b>Yutub</b>
-							<span class="label label-primary">3</span> 
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
-							Esta es la descripción<br>
-							Versión: <b>1.0</b><br>
-							<a href="apks/aplicacion1.apk">Descargar</a>
-						</div>
-					</div>
-					<!--TARJETA DE PRUEBA 3-->
-					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<img src="img/icono3.png" class="img-responsive">
-							<b>Clachofclan</b>
-							<span class="label label-primary">4</span>
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
-							Esta es la descripción<br>
-							Versión: <b>1.0</b><br>
-							<a href="apks/aplicacion1.apk">Descargar</a>
-						</div>
-					</div>
-					<!--TARJETA DE PRUEBA 4-->
-					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<img src="img/icono4.png" class="img-responsive">
-							<b>Candicruch</b>
-							<span class="label label-primary">4</span>
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
-							Esta es la descripción<br>
-							Versión: <b>1.0</b><br>
-							<a href="apks/aplicacion1.apk">Descargar</a>
-						</div>
-					</div>
-					<!--TARJETA DE PRUEBA 5-->
-					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<img src="img/icono5.png" class="img-responsive">
-							<b>Guazap</b>
-							<span class="label label-primary">4</span>
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>
-							Esta es la descripción<br>
-							Versión: <b>1.0</b><br>
-							<a href="apks/aplicacion1.apk">Descargar</a>
-						</div>
-					</div>
-					<!-- Fin de la lista de aplicaciones -->
+				<div class="row" id="div-lista-aplicaciones">
 				</div>
 			</div>
 		</div>

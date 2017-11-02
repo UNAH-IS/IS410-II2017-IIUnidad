@@ -135,9 +135,50 @@
 					0,			
 					$conexion->antiInyeccion($this->urlIcono)
 			);
-			echo $sql;
-			///mysqli_real_escape_string($this->categorias),
+
+			//Descomentar esto para depurar
+			//echo $sql;
+			//var_dump($this->categorias);
 			$resultado = $conexion->ejecutarConsulta($sql);
+			$id = $conexion->ultimoId();
+
+			for ($i=0;$i<sizeof($this->categorias);$i++){
+				$sql=sprintf(
+					'INSERT INTO tbl_categorias_x_aplicacion(codigo_aplicacion, codigo_categoria) VALUES (%s,%s)',
+					$conexion->antiInyeccion($id),
+					$conexion->antiInyeccion($this->categorias[$i])
+				); 
+				$conexion->ejecutarConsulta($sql);
+			}
+			echo "<b>Registro almacenado con exito</b>";
+		}
+
+		public static function obtenerListaAplicaciones($conexion){
+			$resultado = $conexion->ejecutarConsulta(
+				'SELECT a.codigo_aplicacion, a.nombre_aplicacion, a.descripcion, 
+						a.calificacion,a.url_icono, a.version,
+						b.nombre_empresa,
+				        c.tipo_contenido
+				FROM tbl_aplicaciones a
+				INNER JOIN tbl_empresas b 
+				ON (a.codigo_empresa = b.codigo_empresa)
+				INNER JOIN tbl_tipos_contenido c
+				on (a.codigo_tipo_contenido = c.codigo_tipo_contenido)'
+			);
+
+			while (($fila = $conexion->obtenerFila($resultado))){
+					echo '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">';
+					echo '	<div class="well">';
+					echo '		<img src="'.$fila["url_icono"].'" class="img-responsive">';
+					echo '		<b>'.$fila["nombre_aplicacion"].'</b>';
+					echo '		<span class="label label-primary">'.$fila["calificacion"].'</span> ';
+					echo '		<span class="glyphicon glyphicon-star" aria-hidden="true"></span><br>';
+					echo $fila["descripcion"] . '<br>';
+					echo '		Versión: <b>'.$fila["version"].'</b><br>';
+					echo '		Empresa: <b>'.$fila["nombre_empresa"].'</b>';
+					echo '	</div>';
+					echo '</div>';
+			}
 		}
 	}
 ?>

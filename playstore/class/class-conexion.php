@@ -36,6 +36,10 @@
 		public function antiInyeccion($texto){
 			return mysqli_real_escape_string($this->link, $texto);
 		}
+
+		public function ultimoId(){
+			return mysqli_insert_id($this->link);
+		}
 	}
 
 ?>

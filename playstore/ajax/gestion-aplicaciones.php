@@ -14,7 +14,7 @@
 					$_POST["txt-fecha-publicacion"],
 					$_POST["txt-calificacion"],
 					$_POST["slc-url-icono"],
-					null,
+					$_POST["categorias"],
 					$_POST["txt-version"],
 					new Empresa($_POST["slc-empresa"],null,null,null),
 					new TipoCalificacion($_POST["slc-tipos-calificaciones"],null),

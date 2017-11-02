@@ -18,6 +18,10 @@
 	 		include("../class/class-tipo-contenido.php"); 
 	 		TipoContenido::obtenerListaTiposContenidos($objConexion);
 	 	break;
+	 	case "obtener-aplicaciones":
+	 		include("../class/class-aplicacion.php"); 
+	 		Aplicacion::obtenerListaAplicaciones($objConexion);
+	 	break;
 	 	default:
 	 		echo "Accion invalida";
 	 		break;

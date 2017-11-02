@@ -47,7 +47,24 @@ $(document).ready(function(){
 			alert("Error: " + e);
 		}
 	});	
+
+	cargarListaAplicaciones();	
 });
+
+
+function cargarListaAplicaciones(){
+	$.ajax({
+		url:"ajax/get-info.php?accion=obtener-aplicaciones",
+		data:"",
+		method:"POST",
+		success:function(resultado){
+			$("#div-lista-aplicaciones").html(resultado);
+		},
+		error:function(e){
+			alert("Error: " + e);
+		}
+	});	
+}
 
 $("#btn-guardar").click(function(){
 	var categorias = "";
@@ -73,7 +90,8 @@ $("#btn-guardar").click(function(){
 		data:parametros,
 		method:"POST",
 		success:function(respuesta){
-			alert(respuesta);
+			$("#div-resultado-insert").html(respuesta);
+			cargarListaAplicaciones();
 		},
 		error:function(err){
 			alert("Error: " + err);
