@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2017 at 08:50 PM
+-- Generation Time: Nov 03, 2017 at 04:11 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -36,19 +36,21 @@ CREATE TABLE `tbl_aplicaciones` (
   `calificacion` float DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
   `fecha_publicacion` date DEFAULT NULL,
-  `cantidad_instalaciones` int(11) DEFAULT NULL
+  `cantidad_instalaciones` int(11) DEFAULT NULL,
+  `url_icono` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_aplicaciones`
 --
 
-INSERT INTO `tbl_aplicaciones` (`codigo_aplicacion`, `codigo_empresa`, `codigo_tipo_calificacion`, `codigo_tipo_contenido`, `nombre_aplicacion`, `version`, `calificacion`, `descripcion`, `fecha_publicacion`, `cantidad_instalaciones`) VALUES
-(1, 1, 1, 1, 'Facebook', '12', 5, 'Lorem ipsum', '2017-10-06', 1000),
-(2, 2, 2, 1, 'Whatsapp', '1', 4, 'Lorem ipsum', '2017-10-20', 111),
-(3, 3, 3, 1, 'Clash of clans', '2', 5, 'Lorem ipsum', '2017-10-27', 111),
-(4, 1, 1, 1, 'Waze', '2', 5, 'Lorem ipsum', '2017-10-13', 4556),
-(5, 2, 2, 1, 'Pinterest', '3', 4, 'Lorem ipsum', '2017-10-13', 444);
+INSERT INTO `tbl_aplicaciones` (`codigo_aplicacion`, `codigo_empresa`, `codigo_tipo_calificacion`, `codigo_tipo_contenido`, `nombre_aplicacion`, `version`, `calificacion`, `descripcion`, `fecha_publicacion`, `cantidad_instalaciones`, `url_icono`) VALUES
+(6, 3, 3, 2, 'Hoy si', '2', 5, 'Esta es la descripcuib', '2017-01-01', 0, 'img/icono4.png\n'),
+(7, 2, 2, 2, 'sdfsdf', '2', 1, 'sdfsdfsd', '2017-01-01', 0, 'img/icono3.png\n'),
+(8, 2, 2, 1, 'fdgsdf', '2', 1, 'dsfgsd', '2017-01-01', 0, 'img/icono5.png\n'),
+(9, 2, 2, 2, 'Una super aplicacion', '1.1', 5, 'Una super aplicacion', '2017-01-01', 0, 'img/icono1.png\n'),
+(10, 2, 2, 2, 'Una super aplicacion', '1.1', 5, 'Una super aplicacion', '2017-01-01', 0, 'img/icono2.png\n'),
+(11, 2, 3, 3, 'Otra super app', '1', 6, 'Otra', '2017-01-01', 0, 'img/icono5.png\n');
 
 -- --------------------------------------------------------
 
@@ -110,13 +112,13 @@ CREATE TABLE `tbl_categorias_x_aplicacion` (
 --
 
 INSERT INTO `tbl_categorias_x_aplicacion` (`codigo_aplicacion`, `codigo_categoria`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(1, 2),
-(2, 3);
+(10, 1),
+(11, 1),
+(11, 2),
+(10, 3),
+(11, 3),
+(10, 4),
+(11, 4);
 
 -- --------------------------------------------------------
 
@@ -300,7 +302,7 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT for table `tbl_aplicaciones`
 --
 ALTER TABLE `tbl_aplicaciones`
-  MODIFY `codigo_aplicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `codigo_aplicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_categorias`
 --
@@ -339,8 +341,6 @@ ALTER TABLE `tbl_usuarios`
 -- Constraints for table `tbl_aplicaciones`
 --
 ALTER TABLE `tbl_aplicaciones`
-  ADD CONSTRAINT `fk_tbl_aplicaciones_tbl_empresas` FOREIGN KEY (`codigo_empresa`) REFERENCES `tbl_empresas` (`codigo_empresa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tbl_aplicaciones_tbl_tipos_contenido1` FOREIGN KEY (`codigo_tipo_contenido`) REFERENCES `tbl_tipos_contenido` (`codigo_tipo_contenido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tbl_aplicaciones_tbl_tpos_calificaciones1` FOREIGN KEY (`codigo_tipo_calificacion`) REFERENCES `tbl_tipos_calificaciones` (`codigo_tipo_calificacion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -354,7 +354,6 @@ ALTER TABLE `tbl_categorias_x_aplicacion`
 -- Constraints for table `tbl_comentarios`
 --
 ALTER TABLE `tbl_comentarios`
-  ADD CONSTRAINT `fk_tbl_comentarios_tbl_aplicaciones1` FOREIGN KEY (`codigo_aplicacion`) REFERENCES `tbl_aplicaciones` (`codigo_aplicacion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tbl_comentarios_tbl_usuarios1` FOREIGN KEY (`codigo_usuario`) REFERENCES `tbl_usuarios` (`codigo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
