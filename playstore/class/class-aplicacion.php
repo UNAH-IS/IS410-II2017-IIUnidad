@@ -153,6 +153,71 @@
 			echo "<b>Registro almacenado con exito</b>";
 		}
 
+		public function actualizarRegistro($conexion){
+			$sql = sprintf(
+					"UPDATE tbl_aplicaciones SET 
+							codigo_empresa=%s,
+							codigo_tipo_calificacion=%s,
+							codigo_tipo_contenido=%s,
+							nombre_aplicacion='%s',
+							version='%s',
+							calificacion=%s,
+							descripcion='%s',
+							fecha_publicacion='%s',
+							cantidad_instalaciones=%s,
+							url_icono='%s'
+					WHERE codigo_aplicacion=%s",
+					$conexion->antiInyeccion($this->empresa->getCodigoEmpresa()),
+					$conexion->antiInyeccion($this->tipoCalificacion->getCodigoTipoCalificacion()),
+					$conexion->antiInyeccion($this->tipoContenido->getCodigoTipoContenido()),
+					$conexion->antiInyeccion($this->nombreAplicacion),
+					$conexion->antiInyeccion($this->version),
+					$conexion->antiInyeccion($this->calificacionPromedio),
+					$conexion->antiInyeccion($this->descripcion),
+					$conexion->antiInyeccion($this->fechaPubicacion),
+					0,			
+					$conexion->antiInyeccion($this->urlIcono),
+					$conexion->antiInyeccion($this->codigoAplicacion)
+			);
+
+			//Descomentar esto para depurar
+			//echo $sql;
+			//var_dump($this->categorias);
+			$resultado = $conexion->ejecutarConsulta($sql);
+			
+			$conexion->ejecutarConsulta(
+					sprintf('DELETE FROM tbl_categorias_x_aplicacion
+							WHERE codigo_aplicacion = %s',
+							$conexion->antiInyeccion($this->codigoAplicacion)
+					)
+				 );
+
+			for ($i=0;$i<sizeof($this->categorias);$i++){
+				$sql=sprintf(
+					'INSERT INTO tbl_categorias_x_aplicacion(codigo_aplicacion, codigo_categoria) VALUES (%s,%s)',
+					$conexion->antiInyeccion($this->codigoAplicacion),
+					$conexion->antiInyeccion($this->categorias[$i])
+				); 
+				$conexion->ejecutarConsulta($sql);
+			}
+			echo "<b>Registro actualizado con exito</b>";
+		}
+
+		public static function eliminarAplicacion($conexion, $codigoAplicacion){
+			$sql = sprintf(
+					'DELETE FROM tbl_categorias_x_aplicacion WHERE codigo_aplicacion = %s ',
+					$conexion->antiInyeccion($codigoAplicacion)
+				);
+
+			$resultado = $conexion->ejecutarConsulta($sql);
+
+			$sql = sprintf(
+					'DELETE FROM tbl_aplicaciones WHERE tbl_aplicaciones.codigo_aplicacion = %s',
+					$conexion->antiInyeccion($codigoAplicacion)
+				);
+			$resultado = $conexion->ejecutarConsulta($sql);
+		}
+
 		public static function obtenerListaAplicaciones($conexion){
 			$resultado = $conexion->ejecutarConsulta(
 				'SELECT a.codigo_aplicacion, a.nombre_aplicacion, a.descripcion, 
@@ -176,9 +241,45 @@
 					echo $fila["descripcion"] . '<br>';
 					echo '		Versión: <b>'.$fila["version"].'</b><br>';
 					echo '		Empresa: <b>'.$fila["nombre_empresa"].'</b>';
+					echo '<br><button type="button" onclick="eliminarAplicacion('.$fila["codigo_aplicacion"].')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
+					echo '<button type="button" onclick="seleccionarAplicacion('.$fila["codigo_aplicacion"].')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>';
 					echo '	</div>';
 					echo '</div>';
 			}
 		}
+
+
+		public static function obtenerDetalleAplicaciones($conexion, $codigoAplicacion){
+			$resultado = $conexion->ejecutarConsulta(
+				sprintf(
+					'SELECT codigo_aplicacion, codigo_empresa, 
+							codigo_tipo_calificacion, codigo_tipo_contenido, 
+							nombre_aplicacion, version, calificacion, 
+							descripcion, fecha_publicacion, cantidad_instalaciones, 
+							url_icono 
+					FROM tbl_aplicaciones WHERE codigo_aplicacion = %s',
+					$conexion->antiInyeccion($codigoAplicacion)
+				)
+			);
+
+			$fila = $conexion->obtenerFila($resultado);
+
+			$resultado = $conexion->ejecutarConsulta(
+				sprintf(
+					'SELECT codigo_categoria 
+					FROM tbl_categorias_x_aplicacion 
+					WHERE codigo_aplicacion = %s',
+					$conexion->antiInyeccion($codigoAplicacion)
+				)
+			);
+
+			$categorias = array();
+			while(($filaCategoria = $conexion->obtenerFila($resultado))){
+				$categorias[]=$filaCategoria;
+			}
+
+			$fila["categorias"] = $categorias;
+			echo json_encode($fila);
+		}		
 	}
 ?>

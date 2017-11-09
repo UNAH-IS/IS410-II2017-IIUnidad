@@ -22,6 +22,10 @@
 	 		include("../class/class-aplicacion.php"); 
 	 		Aplicacion::obtenerListaAplicaciones($objConexion);
 	 	break;
+	 	case "obtener-aplicacion":
+	 		include("../class/class-aplicacion.php"); 
+	 		Aplicacion::obtenerDetalleAplicaciones($objConexion,$_POST["codigo-aplicacion"]);	 		
+	 	break;
 	 	default:
 	 		echo "Accion invalida";
 	 		break;

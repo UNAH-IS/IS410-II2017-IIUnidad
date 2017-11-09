@@ -7,17 +7,6 @@
 	}
 	fclose($archivo);
 
-
-	//$categorias=array();
-	$categorias[]='Juegos';
-	$categorias[]='Redes sociales';
-	$categorias[]='Entretenimiento';
-
-
-	$desarrolladores[] = 'Juan';
-	$desarrolladores[] = 'Pedro';
-	$desarrolladores[] = 'Steve Jobs';
-	$desarrolladores[] = 'Mark Zucaritas';
 ?>
 
 <!DOCTYPE html>
@@ -37,13 +26,8 @@
 			<div class="col-lg-6">
 				<!--- INICIO DEL FORMULARIO -->
 				<form action="index.php" method="GET">
-					<table class = "table table-striped table-hover">
-						<tr>
-							<td>Código aplicación:</td>
-							<td>
-								<input type="text" name="" id="" class="form-control">
-							</td>
-						</tr>
+					<input type="hidden" name="" id="txt-codigo-aplicacion" class="form-control">
+					<table class = "table table-striped table-hover">						
 						<tr>
 							<td>Nombre aplicación:</td>
 							<td>
@@ -119,7 +103,9 @@
 							<td colspan="2">
 								<input id="btn-guardar" type="button" name="btn-guardar" 
 								value="Guardar" class="btn btn-primary">
-								<input type="button" name="btn-limpiar" 
+								<input id="btn-actualizar" type="button" name="btn-actualizar" 
+								value="Actualizar" class="btn btn-success" style="display: none;">
+								<input type="button" id="btn-limpiar" name="btn-limpiar" 
 								value="Limpiar" class="btn btn-warning">
 							</td>
 						</tr>
