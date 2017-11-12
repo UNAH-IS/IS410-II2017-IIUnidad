@@ -3,7 +3,7 @@
 		private $host = "localhost";
 		private $usuario = "root";
 		private $password = "";
-		private $baseDatos = "playstore_db";
+		private $baseDatos = "db_login";
 		private $puerto = 3306;
 		private $link;
 
@@ -39,6 +39,10 @@
 
 		public function ultimoId(){
 			return mysqli_insert_id($this->link);
+		}
+
+		public function cantidadRegistros($resultado){
+			return mysqli_num_rows($resultado);
 		}
 	}
 

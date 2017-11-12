@@ -58,7 +58,33 @@
 		}
 
 		public static function verificarUsuario($conexion, $correo,$contrasena){
-				
+				$sql = sprintf(
+						"SELECT codigo_usuario, codigo_tipo_usuario, 
+								correo, nombre, contrasena FROM tbl_usuarios 
+						WHERE  correo = '%s' AND contrasena = '%s'",
+						$correo,
+						$contrasena
+					);
+				//echo ($sql);
+				$resultado = $conexion->ejecutarConsulta($sql);
+
+				$cantidadRegistros = $conexion->cantidadRegistros($resultado);
+				$respuesta=array();
+				if ($cantidadRegistros==1){
+					$fila = $conexion->obtenerFila($resultado);
+					$_SESSION["codigo_usuario"] = $fila["codigo_usuario"];
+					$_SESSION["correo"] = $fila["correo"];
+					$_SESSION["nombre"] = $fila["nombre"];
+					$respuesta["status"]=1;
+					$respuesta["mensaje"]="Si tiene acceso" ;
+					$respuesta["codigo_tipo_usuario"]=$fila['codigo_tipo_usuario'];
+				}else{
+					$respuesta["status"]=0;
+					$respuesta["mensaje"]="No tiene acceso" ;
+				}
+
+				echo json_encode($respuesta);
 		}
 	}
 ?>
+
